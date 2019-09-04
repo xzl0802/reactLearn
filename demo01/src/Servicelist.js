@@ -2,7 +2,7 @@
  * @Author: xzl 
  * @Date: 2019-09-04 10:02:53 
  * @Last Modified by: xzl
- * @Last Modified time: 2019-09-04 16:03:43
+ * @Last Modified time: 2019-09-04 16:31:20
  */
 
  
@@ -22,7 +22,7 @@
           return(
                 <Fragment>
                     <div>
-                        <label htmlFor='inputId'><label>
+                        <label htmlFor='inputId'></label>
                         <input  id="inputId" className="inputName" value={this.state.inputVal}  onChange={this.inputChange.bind(this)}/>  
                          {/* //数据绑定         dangerouslySetInnerHTML  html 渲染 */}
                         <button  onClick={this.addList.bind(this)}>增加服务</button></div>
