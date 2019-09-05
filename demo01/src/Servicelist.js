@@ -2,7 +2,7 @@
  * @Author: xzl 
  * @Date: 2019-09-04 10:02:53 
  * @Last Modified by: xzl
- * @Last Modified time: 2019-09-05 10:02:49
+ * @Last Modified time: 2019-09-05 13:54:10
  */
 
  
@@ -32,8 +32,13 @@
                            
                               {/*<li  onClick={this.deleteItem.bind(this,index)}  key={index+item}  dangerouslySetInnerHTML ={{__html:item}} ></li>*/  }
                               return (
-                          <div>
-                              <Itemindex />
+                          <div       key={index+item}>
+                              {/* 父子组件传值 */}
+                              <  Itemindex 
+                              content={item}
+                              index ={index}
+                             deleteItem={this.deleteItem.bind(this)}   
+                               />
                           </div>
                           )
                             })
