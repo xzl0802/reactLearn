@@ -2,11 +2,13 @@
  * @Author: xzl 
  * @Date: 2019-09-05 13:58:08 
  * @Last Modified by: xzl
- * @Last Modified time: 2019-09-05 14:04:40
+ * @Last Modified time: 2019-09-05 15:02:11
  */
 
 
-
+ 
+ //单项数据流
+ 
 // 　　React是单向数据流，数据主要从父节点传递到子节点（通过props）。
 
 // 　　如果顶层（父级）的某个props改变了，React会重渲染所有的子节点。

@@ -2,11 +2,16 @@
  * @Author: xzl 
  * @Date: 2019-09-05 09:54:13 
  * @Last Modified by: xzl
- * @Last Modified time: 2019-09-05 13:56:54
+ * @Last Modified time: 2019-09-05 16:18:56
  */
 
  //????????
  import React, { Component,Fragment } from 'react';
+ import PropTypes from 'prop-types'
+
+ //????????
+
+
 
  class Itemindex extends Component {
 
@@ -19,7 +24,7 @@
          return (
                <Fragment>
                  {/* ??????? */}
-             <li onClick={this.handleDelte.bind(this)}>{this.props.content}</li>  
+             <li onClick={this.handleDelte.bind(this)}>{this.props.name}-{this.props.content}</li>  
              
              </Fragment>
            );
@@ -32,4 +37,13 @@
      }
  }
   
+ //????
+ Itemindex.propTypes={
+   content:PropTypes.string, 
+   index:  PropTypes.number,
+   deleteItem:PropTypes.func
+ }
+ Itemindex.defaultProps={
+     name:'1'
+ }
  export default Itemindex;
