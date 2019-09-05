@@ -2,13 +2,13 @@
  * @Author: xzl 
  * @Date: 2019-09-04 10:02:53 
  * @Last Modified by: xzl
- * @Last Modified time: 2019-09-04 16:31:20
+ * @Last Modified time: 2019-09-05 10:02:49
  */
 
  
  import React,{Component,Fragment} from 'react';
  import './index.css';
-
+ import  Itemindex from './Itemindex';
  class Servicelist  extends  Component{
     constructor(props){  //数据初始化
         super(props)
@@ -29,8 +29,14 @@
                     <ul>
                       {
                           this.state.list.map((item,index)=>{
-                              return <li  onClick={this.deleteItem.bind(this,index)}  key={index+item}  dangerouslySetInnerHTML ={{__html:item}} ></li>
-                          })
+                           
+                              {/*<li  onClick={this.deleteItem.bind(this,index)}  key={index+item}  dangerouslySetInnerHTML ={{__html:item}} ></li>*/  }
+                              return (
+                          <div>
+                              <Itemindex />
+                          </div>
+                          )
+                            })
                       }
                     </ul>
                 </Fragment>
