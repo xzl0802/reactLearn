@@ -2,7 +2,7 @@
  * @Author: xzl 
  * @Date: 2019-09-04 10:02:53 
  * @Last Modified by: xzl
- * @Last Modified time: 2019-09-09 15:57:41
+ * @Last Modified time: 2019-09-09 16:12:54
  */
 
  
@@ -25,6 +25,19 @@
      //组件挂载完成
      componentDidMount(){
         console.log('componentWillMount ----组件挂载完成') 
+     }
+
+     shouldComponentUpdate(){  //是否渲染
+     console.log('shouldComponentUpdate----------------')
+     return true
+     }
+
+     componentWillUpdate(){  //渲染中
+         console.log('componentWillUpdate=--------------')
+        
+     }
+     componentDidUpdate(){ //组件更新完毕
+     console.log('componentDidUpdate-------4')
      }
      render(){
         console.log('render ----组件挂载中') 

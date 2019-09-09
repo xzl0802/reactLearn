@@ -2,7 +2,7 @@
  * @Author: xzl 
  * @Date: 2019-09-05 09:54:13 
  * @Last Modified by: xzl
- * @Last Modified time: 2019-09-05 16:18:56
+ * @Last Modified time: 2019-09-09 16:19:41
  */
 
  //????????
@@ -18,6 +18,15 @@
     constructor(props){
       super(props)
       // this.handleDelte =this,this.handleDelte.bind(this);  ???????this???
+    }
+    //????????dom?  ???????
+    //??????DOM?  ???????
+    componentWillReceiveProps(){
+      console.log("componentWillReceiveProps=============???")
+    }
+    //?????????  
+    componentWillUnmount(){
+ console.log('componentWillUnmount-------------???')
     }
      //state = {  }
      render() { 
