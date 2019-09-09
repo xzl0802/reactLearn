@@ -2,7 +2,7 @@
  * @Author: xzl 
  * @Date: 2019-09-04 10:02:53 
  * @Last Modified by: xzl
- * @Last Modified time: 2019-09-09 15:36:02
+ * @Last Modified time: 2019-09-09 15:57:41
  */
 
  
@@ -10,6 +10,7 @@
  import './index.css';
  import  Itemindex from './Itemindex';
  class Servicelist  extends  Component{
+     //在某一刻可以自动执行的函数      --生命周期初始化阶段
     constructor(props){  //数据初始化
         super(props)
         this.state={
@@ -17,8 +18,16 @@
             list:['测试1','册12']
         }
     }
-
+    //将要挂载之前
+     componentWillMount(){
+    console.log('componentWillMount ----组件将要挂载之前的时刻')
+     }
+     //组件挂载完成
+     componentDidMount(){
+        console.log('componentWillMount ----组件挂载完成') 
+     }
      render(){
+        console.log('render ----组件挂载中') 
           return(
                 <Fragment>
                     <div>
