@@ -2,7 +2,7 @@
  * @Author: xzl 
  * @Date: 2019-09-04 10:02:53 
  * @Last Modified by: xzl
- * @Last Modified time: 2019-09-05 16:05:17
+ * @Last Modified time: 2019-09-09 15:36:02
  */
 
  
@@ -23,10 +23,12 @@
                 <Fragment>
                     <div>
                         <label htmlFor='inputId'></label>
-                        <input  id="inputId" className="inputName" value={this.state.inputVal}  onChange={this.inputChange.bind(this)}/>  
+                        <input  id="inputId" className="inputName" value={this.state.inputVal}  
+                         ref ={(input)=>{this.input =input}}
+                        onChange={this.inputChange.bind(this)}/>  
                          {/* //数据绑定         dangerouslySetInnerHTML  html 渲染 */}
                         <button  onClick={this.addList.bind(this)}>增加服务</button></div>
-                    <ul>
+                    <ul ref ={(ul)=>{this.ul =ul}}>
                       {
                           this.state.list.map((item,index)=>{
                            
@@ -47,19 +49,30 @@
                 </Fragment>
           )
      }
-     inputChange(e){  //定义函数
+    //  inputChange(e){  //定义函数
+   
+    //     this.setState({
+    //         inputVal:e.target.value
+    //     })
+        
+    //  }  
+     inputChange(){  //定义函数
    
         this.setState({
-            inputVal:e.target.value
+            inputVal:this.input.value    //ref 使用赋值 
         })
-     }  
+        
+     } 
      //增加列表
      addList(){
-      this.setState({
-          list:[...this.state.list,this.state.inputVal],   //... es6扩展运算符
+      this.setState({   //异步处理进程  详细学习虚拟DOM
+          list:[...this.state.list,this.state.inputVal],   //... es6扩展运算符  
           inputVal:''
+      },()=>{
+//打印数量
+console.log(this.ul.querySelectorAll('li').length);
       }) 
-
+       
      }
      //删除
      deleteItem(index){  
