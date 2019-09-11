@@ -2,13 +2,15 @@
  * @Author: xzl 
  * @Date: 2019-09-04 10:02:53 
  * @Last Modified by: xzl
- * @Last Modified time: 2019-09-11 10:37:35
+ * @Last Modified time: 2019-09-11 14:43:28
  */
 
  
  import React,{Component,Fragment} from 'react';
+ import axios  from 'axios';
  import './index.css';
  import  Itemindex from './Itemindex';
+ import Boss  from './Boss'
  class Servicelist  extends  Component{
      //在某一刻可以自动执行的函数      --生命周期初始化阶段
     constructor(props){  //数据初始化
@@ -25,6 +27,14 @@
      //组件挂载完成
      componentDidMount(){
         console.log('componentWillMount ----组件挂载完成') 
+   
+      //数据请求
+    axios.get().then((res)=>{
+
+    })
+    .catch((err)=>{
+        
+    })
      }
 
      shouldComponentUpdate(){  //是否渲染
@@ -68,6 +78,7 @@
                             })
                       }
                     </ul>
+                    <Boss/>
                 </Fragment>
           )
      }
