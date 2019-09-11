@@ -2,7 +2,7 @@
  * @Author: xzl 
  * @Date: 2019-09-04 10:02:53 
  * @Last Modified by: xzl
- * @Last Modified time: 2019-09-09 16:12:54
+ * @Last Modified time: 2019-09-11 10:37:35
  */
 
  
@@ -107,6 +107,12 @@ console.log(this.ul.querySelectorAll('li').length);
  }
  export default Servicelist;
 
+
+
+
+
+
+ 
 //  //一、为什么使用prop-types
 // 在多人开发时，当被人使用自己定义的组件时，有可能出现类型传错的情况，而在自己的组件上加上prop-types，他可以对父组件传来的props进行检查，加入父组件中想传递的是字符串类型‘3’，而传递了一个数字类型3，如果没有类型检查系统不会给与提示，但是有了类型检查以后，再控制台会给你一个类型传递错误的提示。这样在工作中可以快速找到错误。
 
