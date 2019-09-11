@@ -2,7 +2,7 @@
  * @Author: xzl 
  * @Date: 2019-09-05 09:54:13 
  * @Last Modified by: xzl
- * @Last Modified time: 2019-09-09 16:19:41
+ * @Last Modified time: 2019-09-11 10:28:01
  */
 
  //????????
@@ -28,8 +28,19 @@
     componentWillUnmount(){
  console.log('componentWillUnmount-------------???')
     }
+
+    shouldComponentUpdate(nextProps,nxetState){  //组件性能优化
+     if(nextProps.content != this.props.content){
+       return true;
+     }
+     else{
+       return false;
+     }
+
+    }
      //state = {  }
      render() { 
+      console.log('child-------------???')
          return (
                <Fragment>
                  {/* ??????? */}
