@@ -1,11 +1,48 @@
 .inputName{
     border: 1px solid #ae7000;
 }
-.show{
+/* .show{
     opacity: 1;
     transition: all 1.5s ease-in;
-}
-.hide{
+} */
+/* .hide{
     opacity: 0;
     transition: all 1.5s ease-in;
+} */
+
+.show{
+    animation: show-item 2s ease-in forwards;
+} 
+.hide{
+    animation: hide-item 2s ease-in forwards;
 }
+/* 关键祯隐藏 */
+@keyframes hide-item{
+   0%{
+       opacity: 1;
+       color: #ae7000;
+   } 
+   50%{
+       opacity: 0.5;
+       color: #000;
+   }
+   100%{
+       opacity: 0.1;
+       color: aquamarine;
+   }
+}
+/* 关键帧出现 */
+@keyframes show-item{
+    0%{
+        opacity: 0;
+        color: #ae7000;
+    } 
+    50%{
+        opacity: 0.5;
+        color: #000;
+    }
+    100%{
+        opacity: 1;
+        color: aquamarine;
+    }
+ }
