@@ -5,125 +5,135 @@
  * @Last Modified time: 2019-09-11 14:43:28
  */
 
- 
- import React,{Component,Fragment} from 'react';
- import axios  from 'axios';
- import './index.css';
- import  Itemindex from './Itemindex';
- import Boss  from './Boss'
- class Servicelist  extends  Component{
-     //在某一刻可以自动执行的函数      --生命周期初始化阶段
-    constructor(props){  //数据初始化
+
+import React, { Component, Fragment } from 'react';
+import axios from 'axios';
+import './index.css';
+import Itemindex from './Itemindex';
+import Boss from './Boss'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+class Servicelist extends Component {
+    //在某一刻可以自动执行的函数      --生命周期初始化阶段
+    constructor(props) {  //数据初始化
         super(props)
-        this.state={
-            inputVal:'',
-            list:['测试1','册12']
+        this.state = {
+            inputVal: '',
+            list: ['测试1', '册12']
         }
     }
     //将要挂载之前
-     componentWillMount(){
-    console.log('componentWillMount ----组件将要挂载之前的时刻')
-     }
-     //组件挂载完成
-     componentDidMount(){
-        console.log('componentWillMount ----组件挂载完成') 
-   
-      //数据请求
-    axios.get().then((res)=>{
+    componentWillMount() {
+        console.log('componentWillMount ----组件将要挂载之前的时刻')
+    }
+    //组件挂载完成
+    componentDidMount() {
+        console.log('componentWillMount ----组件挂载完成')
 
-    })
-    .catch((err)=>{
-        
-    })
-     }
+        //数据请求
+        axios.get().then((res) => {
 
-     shouldComponentUpdate(){  //是否渲染
-     console.log('shouldComponentUpdate----------------')
-     return true
-     }
+        })
+            .catch((err) => {
 
-     componentWillUpdate(){  //渲染中
-         console.log('componentWillUpdate=--------------')
-        
-     }
-     componentDidUpdate(){ //组件更新完毕
-     console.log('componentDidUpdate-------4')
-     }
-     render(){
-        console.log('render ----组件挂载中') 
-          return(
-                <Fragment>
-                    <div>
-                        <label htmlFor='inputId'></label>
-                        <input  id="inputId" className="inputName" value={this.state.inputVal}  
-                         ref ={(input)=>{this.input =input}}
-                        onChange={this.inputChange.bind(this)}/>  
-                         {/* //数据绑定         dangerouslySetInnerHTML  html 渲染 */}
-                        <button  onClick={this.addList.bind(this)}>增加服务</button></div>
-                    <ul ref ={(ul)=>{this.ul =ul}}>
-                      {
-                          this.state.list.map((item,index)=>{
-                           
-                              {/*<li  onClick={this.deleteItem.bind(this,index)}  key={index+item}  dangerouslySetInnerHTML ={{__html:item}} ></li>*/  }
-                              return (
-                          <div       key={index+item}>
-                              {/* 父子组件传值 */}
-                              <  Itemindex 
-                              content={item}
-                              index ={index}
-                             deleteItem={this.deleteItem.bind(this)}   
-                               />
-                          </div>
-                          )
+            })
+    }
+
+    shouldComponentUpdate() {  //是否渲染
+        console.log('shouldComponentUpdate----------------')
+        return true
+    }
+
+    componentWillUpdate() {  //渲染中
+        console.log('componentWillUpdate=--------------')
+
+    }
+    componentDidUpdate() { //组件更新完毕
+        console.log('componentDidUpdate-------4')
+    }
+    render() {
+        console.log('render ----组件挂载中')
+        return (
+            <Fragment>
+                <div>
+                    <label htmlFor='inputId'></label>
+                    <input id="inputId" className="inputName" value={this.state.inputVal}
+                        ref={(input) => { this.input = input }}
+                        onChange={this.inputChange.bind(this)} />
+                    {/* //数据绑定         dangerouslySetInnerHTML  html 渲染 */}
+                    <button onClick={this.addList.bind(this)}>增加服务</button></div>
+                <ul ref={(ul) => { this.ul = ul }}>
+                    <TransitionGroup>
+                        {
+                            this.state.list.map((item, index) => {
+
+                                {/*<li  onClick={this.deleteItem.bind(this,index)}  key={index+item}  dangerouslySetInnerHTML ={{__html:item}} ></li>*/ }
+                                return (
+                                    <CSSTransition 
+                                      timeout={2000}
+                                      classNames="boss-text"
+                                      unmountOnExit
+                                      key={index+item}
+                                    >
+                                    <div key={index + item}>
+                                        {/* 父子组件传值 */}
+                                        <  Itemindex
+                                            content={item}
+                                            index={index}
+                                            deleteItem={this.deleteItem.bind(this)}
+                                        />
+                                    </div>
+                                    </CSSTransition>
+                                )
                             })
-                      }
-                    </ul>
-                    <Boss/>
-                </Fragment>
-          )
-     }
+                        }
+                    </TransitionGroup>
+                </ul>
+                <Boss />
+            </Fragment>
+        )
+    }
     //  inputChange(e){  //定义函数
-   
+
     //     this.setState({
     //         inputVal:e.target.value
     //     })
-        
+
     //  }  
-     inputChange(){  //定义函数
-   
+    inputChange() {  //定义函数
+
         this.setState({
-            inputVal:this.input.value    //ref 使用赋值 
+            inputVal: this.input.value    //ref 使用赋值 
         })
-        
-     } 
-     //增加列表
-     addList(){
-      this.setState({   //异步处理进程  详细学习虚拟DOM
-          list:[...this.state.list,this.state.inputVal],   //... es6扩展运算符  
-          inputVal:''
-      },()=>{
-//打印数量
-console.log(this.ul.querySelectorAll('li').length);
-      }) 
-       
-     }
-     //删除
-     deleteItem(index){  
-         let list = this.state.list;
-         list.splice(index,1);  //数组删除元素
-         this.setState({
-             list:list
-         })
-     }
- }
- export default Servicelist;
+
+    }
+    //增加列表
+    addList() {
+        this.setState({   //异步处理进程  详细学习虚拟DOM
+            list: [...this.state.list, this.state.inputVal],   //... es6扩展运算符  
+            inputVal: ''
+        }, () => {
+            //打印数量
+            console.log(this.ul.querySelectorAll('li').length);
+        })
+
+    }
+    //删除
+    deleteItem(index) {
+        let list = this.state.list;
+        list.splice(index, 1);  //数组删除元素
+        this.setState({
+            list: list
+        })
+    }
+}
+export default Servicelist;
 
 
 
 
 
 
- 
+
 //  //一、为什么使用prop-types
 // 在多人开发时，当被人使用自己定义的组件时，有可能出现类型传错的情况，而在自己的组件上加上prop-types，他可以对父组件传来的props进行检查，加入父组件中想传递的是字符串类型‘3’，而传递了一个数字类型3，如果没有类型检查系统不会给与提示，但是有了类型检查以后，再控制台会给你一个类型传递错误的提示。这样在工作中可以快速找到错误。
 
@@ -187,7 +197,7 @@ console.log(this.ul.querySelectorAll('li').length);
 // 八、arrOf和objectOf多重嵌套类型检测
 //   // An array of a certain type
 //   optionalArrayOf: PropTypes.arrayOf(PropTypes.number),
- 
+
 //   // An object with property values of a certain type
 //   optionalObjectOf: PropTypes.objectOf(PropTypes.number),
 //   //示例
