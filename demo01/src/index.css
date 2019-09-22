@@ -46,3 +46,32 @@
         color: aquamarine;
     }
  }
+
+/* react 动画组件  */
+/* 入场 */
+.boss-text-enter{   
+opacity: 1;
+}
+/* 入场到结束 */
+.boss-text-active{   
+opacity: 1;
+transition: opacity 2000ms;
+}
+/* 入场完成 */
+.boss-text-done{   
+    opacity: 1;
+}
+/* 出场 */
+.boss-text-exit{   
+    opacity: 1;
+
+}
+/* 出场到结束 */
+.boss-text-exit-active{   
+    opacity: 1;
+    transition: opacity 2000ms;
+}
+/* 出场完成 */
+.boss-text-exit-done{   
+    opacity: 0;
+}

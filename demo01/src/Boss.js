@@ -6,6 +6,7 @@
  */
 
  import React, { Component } from 'react';
+ import {CSSTransition}  from  'react-transition-group'
  class Boss extends Component {
      
      constructor(props){
@@ -18,7 +19,13 @@
      render() { 
          return (
             <div>
-                <div className={this.state.isShow?'show':'hide'}>Boos</div>
+                <CSSTransition
+                  in={this.state.isShow}
+                  timeout ={2000}
+                  classNames="boss-text">
+                      <div>你好</div>
+                </CSSTransition>
+                {/* <div className={this.state.isShow?'show':'hide'}>Boos</div> */}
                 <div><button onClick={this.toToggole}>test</button></div>
             </div>
 
